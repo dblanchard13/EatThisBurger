@@ -4,12 +4,13 @@ var connection = require("./connection.js");
 
 // ORM
 
+var tableName = "burgers";
 
 var orm = {
 
-  all: function(table, callback) {
+  all: function(callback) {
 
-    var q = "SELECT * FROM " + table
+    var q = "SELECT * FROM burgers ";
 
     connection.query(q, function(err, result) {
       callback(result);
@@ -17,19 +18,21 @@ var orm = {
 
   },
 
-  addPersonToPairs: function(person, pair, callback) {
+  addBurger: function(burger, callback) {
 
-    var q = "INSERT INTO pairs (name, secret_santa) VALUES (\"" + person +"\", \"" + pair +"\");"
-    console.log(q)
-    connection.query(q, function(err, result) {
+    var q = "INSERT INTO " + tableName + " (burger_name) VALUES (?)";
+
+    connection.query(q, [burger.burger_name], function(err, result) {
       callback(result);
-      console.log("result " +result)
     });
 
   },
+  eatAndUpdateBurger: function(id, cb) {
+    var queryString = "UPDATE " + tableName;
 
-  deletePersonFromPeopleRemaining: function(name, cb) {
-    var queryString = "DELETE FROM people_remaining WHERE name = \"" + name + "\";"
+    queryString += " SET devoured = 1";
+    queryString += " WHERE id =";
+    queryString += id;
 
     console.log(queryString);
     connection.query(queryString, function(err, result) {

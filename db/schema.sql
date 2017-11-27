@@ -1,21 +1,11 @@
-CREATE DATABASE secret_santa;
-USE secret_santa;
+CREATE DATABASE burgers_db;
+USE burgers_db;
 
-CREATE TABLE people_remaining (
-	id INT AUTO_INCREMENT NOT NULL,
-	name VARCHAR(100),
-	PRIMARY KEY(id)
-)
-
-CREATE TABLE people (
-	id INT AUTO_INCREMENT NOT NULL,
-	name VARCHAR(100),
-	PRIMARY KEY(id)
-)
-
-CREATE TABLE pairs (
-	id INT AUTO_INCREMENT NOT NULL,
-	name VARCHAR(100),
-	pair VARCHAR(100),
-	PRIMARY KEY(id)
-)
+CREATE TABLE burgers
+(
+	id int NOT NULL AUTO_INCREMENT,
+	burger_name varchar(255) NOT NULL,
+	devoured BOOLEAN DEFAULT false,
+	date_created TIMESTAMP NOT NULL,
+	PRIMARY KEY (id)
+);
