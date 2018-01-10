@@ -1,8 +1,10 @@
 $(function() {
   $(".change-devoured").on("click", function(event) {
     var id = $(this).data("id");
+    // You don't actually use this variable anywhere, so it's safe to remove it
     var newDevoured = $(this).data("newDevoured");
 
+    // Data is the plural form of the word 🤓
     var datas = {
       id: id
     };

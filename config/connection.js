@@ -1,5 +1,6 @@
 // Set up MySQL connection.
 var mysql = require("mysql");
+// Pretty sure this is the only place you didn't use a semi-colon
 var connection
 
 if (process.env.JAWSDB_URL) {
